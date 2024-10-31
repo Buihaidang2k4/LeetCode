@@ -12,22 +12,30 @@ Explanation: The square root of 8 is 2.82842..., and since we round it down to t
  */
 
 #include <iostream>
-
+#include<math.h>
 using namespace std;
 
 class Solution {
 public:
     int mySqrt(int x) {
-        
+       double guess = x / 2; // Giá trị ban đầu của guess
+
+    while (true) {
+        double new_guess = (guess + x / guess) / 2; // Cập nhật giá trị mới cho guess
+        if (fabs(new_guess - guess) < 0.0001) // Kiểm tra điều kiện dừng
+            break;
+        guess = new_guess; // Cập nhật guess cho lần lặp tiếp theo
+    }
+    return guess;
     }
 };
 
 int main()
 {
 	Solution solution;
-	int x = 4;
+	int x = 8;
 
-	int n = solution.mySqrt();
+	int n = solution.mySqrt(x);
 	cout<<"sqrt(x): "<<n;
 	cout<<endl;
 	return 0;
