@@ -33,7 +33,7 @@ public:
 int main()
 {
 	Solution solution;
-	int x = 8;
+	int x; cin>>x;
 
 	int n = solution.mySqrt(x);
 	cout<<"sqrt(x): "<<n;
