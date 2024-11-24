@@ -43,6 +43,7 @@ public:
 };
 */
 
+/*
 class Solution {
 public:
     void preorder(TreeNode* root,vector<int>& res){
@@ -58,6 +59,20 @@ public:
     vector<int> preorderTraversal(TreeNode* root) {
         vector<int> rel;
         preorder(root,rel);        
+        return rel;
+    }
+};
+*/
+class Solution {
+public:
+    vector<int> rel;
+    vector<int> preorderTraversal(TreeNode* root) {
+        if (root != NULL)
+        {
+            rel.push_back(root->val);
+            preorderTraversal(root->left);
+            preorderTraversal(root->right);
+        }
         return rel;
     }
 };
