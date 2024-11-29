@@ -90,7 +90,7 @@ int main() {
 
     ListNode* intersect = new ListNode(intersectVal);
 
-    ListNode* tempA = headA;
+    ListNode* tempA = headA;    
     for (int i = 0; i < skipA; ++i) tempA = tempA->next;
     tempA->next = intersect;
 
