@@ -18,7 +18,7 @@ using umap = unordered_map<int, string>; // Bảng băm không tuần tự
 // Đo thời gian thực thi
 #define START_TIMER auto start = chrono::high_resolution_clock::now();
 #define END_TIMER   auto end = chrono::high_resolution_clock::now(); \
-                    cout << "Bắt đầu thực thi: " \
+                    cout << "Starts: " \
                          << chrono::duration_cast<chrono::microseconds>(end - start).count() \
                          << " microseconds" << endl;
 
@@ -32,11 +32,42 @@ inline void fastIO() {
     cin.tie(nullptr);
 }
 
-// Hàm chính
+struct TreeNode {
+      int val;
+      TreeNode *left;
+      TreeNode *right;
+      TreeNode() : val(0), left(nullptr), right(nullptr) {}
+      TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+      TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ };
+
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+
+        if(root == NULL) return 0;
+        int right = maxDepth(root->right);
+        int left = maxDepth(root->left);
+
+        return 1 + max(left,right);
+    }
+};
+
 int main() {
-    fastIO(); // Tăng tốc độ đọc/ghi
-    START_TIMER; // Bắt đầu đo thời gian
+    fastIO(); 
+    START_TIMER;    
    
+
+    TreeNode* root = new TreeNode(1);
+    root->right = new TreeNode(2);
+    root->right->left = new TreeNode(3);
+
+    Solution s;
+    int n  = s.maxDepth(root);
+    cout<< n;
+
+
+
     cout << endl;
     END_TIMER; 
     return 0;
